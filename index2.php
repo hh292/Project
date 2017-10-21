@@ -48,7 +48,11 @@ abstract class page {
         //echo "In Abstract constructor!";
         $this->html.= '<html>';
         $this->html.= '<link rel="stylesheet" href="styles.css">';
+        $this->html .= '<h1>Welcome to csv-table project</h1>';
+        $this->html .= '----------------------------------------------------------------';
+        $this->html .= '<h3>Copyright @ Himanshu Hunge hh292</h3>';
         $this->html.= '<body>';
+        $this->html .= '----------------------------------------------------------------';
 
 
     }
@@ -70,7 +74,7 @@ abstract class page {
 
   }
 
-
+// .....................hh292
 
 class homepage extends page
 {
@@ -84,12 +88,14 @@ class homepage extends page
         $form.='<input type="file" name="fileToUpload" id="fileToUpload">';
         $form.='<input type="submit" value="Upload file" name="submit">';
         $form.='</form>';
-        $this->html.='<h1>Upload Form</h1>';
+        $this->html.='<h3>Please Upload csv file</h1>';
         $this->html.=$form;
         print_r($this->html);
         
 
     }  
+
+// ...............................hh292
 
     public function post()
 
@@ -109,9 +115,11 @@ class homepage extends page
 }
 
 
+// ........................hh292
+
 class htmlTable extends page {
 
-
+                     
   public function get(){
 
         $tmpName = " ";
@@ -122,35 +130,38 @@ class htmlTable extends page {
         $ext = explode('.', $tmpName);
 
         $x=strtolower(end($ext));
+
          if($x=="csv")
          {                    
          
          //echo "------> ".$tmpName;
-         echo "<html><body><table border='2'>\n\n";
-                  if(($handle = fopen("Uploads/".$tmpName, "a+")) !== FALSE) 
-                  {
-             //echo "READ SUCCESSFUL";
-             $data = fgetcsv($handle,1000000,',',' ');
-             //print_r($data);
-                        while(($data = fgetcsv($handle)) !== FALSE) 
-                        {
-                     echo "<tr>";
-                     foreach ($data as $cell) 
-                         {
-                     echo "<td>" . htmlspecialchars($cell) . "</td>";
-             }
-                 echo "</tr>\n";
-             }
-             fclose($handle);
-             echo "\n</table></body></html>";
-               
-                  }
+         echo "<html><body><table border='5'>\n\n";
+         $f = fopen("Uploads/".$tmpName, "r+");
+         echo "<h3>-----Your CSV Data in Table Form-----</h2> "; 
+     
+            while (($line = fgetcsv($f)) !== false) 
+            {
+               echo "<tr>";
+        
+               foreach ($line as $cell) 
+               {
+                
+                 echo "<td>" . htmlspecialchars($cell) . "</td>";
+               }
+                 
+                 echo "<tr> </tr>\n";
             }
+           
+             fclose($f);
+        
+          echo "\n</table></body></html>";
+         }
 
+         else {
+
+        echo("Please upload csv file");
+        }
     }
-
-
-  }
-
+}
 ?>
 
