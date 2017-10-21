@@ -136,10 +136,10 @@ class htmlTable extends page {
          
          //echo "------> ".$tmpName;
          echo "<html><body><table border='5'>\n\n";
-         $f = fopen("Uploads/".$tmpName, "r+");
+         $fileGet = fopen("Uploads/".$tmpName, "r+");
          echo "<h3>-----Your CSV Data in Table Form-----</h2> "; 
      
-            while (($line = fgetcsv($f)) !== false) 
+            while (($line = fgetcsv($fileGet)) !== false) 
             {
                echo "<tr>";
         
@@ -152,7 +152,7 @@ class htmlTable extends page {
                  echo "<tr> </tr>\n";
             }
            
-             fclose($f);
+             fclose($fileGet);
         
           echo "\n</table></body></html>";
          }
