@@ -11,12 +11,10 @@ $obj = new main();
 
     public function __construct()
     {
-        //print_r($_REQUEST);
-        //set default page request when no parameters are in URL
+        
         $pageRequest = 'homepage';
         
-        //check if there are parameters
-        
+       
         if(isset($_REQUEST['page'])) {
             
             //load the type of page the request wants into page request
@@ -62,15 +60,12 @@ abstract class page {
 
     public function get()
     {
-        //echo "In abstract get";
-        //print_r($_GET);
+        
     }
 
     public function post() {
        
-       //echo "In post";
-
-       //print_r($_POST);
+      
     }
 
   }
@@ -129,7 +124,7 @@ class htmlTable extends page {
         $x=strtolower(end($ext));
          if($x=="csv")
          {                    
-         //$tmpName = $_FILES["fileToUpload"]["name"];
+         
          //echo "------> ".$tmpName;
          echo "<html><body><table border='2'>\n\n";
                   if(($handle = fopen("Uploads/".$tmpName, "a+")) !== FALSE) 
