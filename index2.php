@@ -117,10 +117,14 @@ class homepage extends page
 
 // ........................hh292
 
-class htmlTable extends page {
+class htmlTable extends page     
+
+{
 
                      
-  public function get(){
+  public function get()
+
+  {
 
         $tmpName = " ";
 
@@ -137,7 +141,7 @@ class htmlTable extends page {
          //echo "------> ".$tmpName;
          echo "<html><body><table border='5'>\n\n";
          $fileGet = fopen("Uploads/".$tmpName, "r+");
-         echo "<h3>-----Your CSV Data in Table Form-----</h2> "; 
+         echo "<h3>-----------Your Data in Table Form ----------</h2> "; 
      
             while (($line = fgetcsv($fileGet)) !== false) 
             {
@@ -163,5 +167,6 @@ class htmlTable extends page {
         }
     }
 }
+
 ?>
 
