@@ -88,7 +88,7 @@ class homepage extends page
         $form.='<input type="file" name="fileToUpload" id="fileToUpload">';
         $form.='<input type="submit" value="Upload file" name="submit">';
         $form.='</form>';
-        $this->html.='<h3>Please Upload csv file</h1>';
+        $this->html.='<h3>Please Upload Comma separated Value file - </h1>';
         $this->html.=$form;
         print_r($this->html);
         
@@ -139,9 +139,9 @@ class htmlTable extends page
          {                    
          
          //echo "------> ".$tmpName;
-         echo "<html><body><table border='5'>\n\n";
+         echo "<html><body><table border='5'><center>\n\n";
          $fileGet = fopen("Uploads/".$tmpName, "r+");
-         echo "<h3>-----------Your Data in Table Form ----------</h2> "; 
+         echo "<h3><center>----------------------Your Data in Table Form ---------------------</center></h2> "; 
      
             while (($line = fgetcsv($fileGet)) !== false) 
             {
@@ -150,20 +150,20 @@ class htmlTable extends page
                foreach ($line as $cell) 
                {
                 
-                 echo "<td>" . htmlspecialchars($cell) . "</td>";
+                 echo "<td><center>" . htmlspecialchars($cell) . "</center></td>";
                }
                  
-                 echo "<tr> </tr>\n";
+                 echo "<tr><center> </center></tr>\n";
             }
            
              fclose($fileGet);
         
-          echo "\n</table></body></html>";
+          echo "\n</center></table></body></html>";
          }
 
          else {
 
-        echo("Please upload csv file");
+        echo("Please upload csv file!!");
         }
     }
 }
